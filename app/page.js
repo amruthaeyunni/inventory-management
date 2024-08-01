@@ -12,16 +12,20 @@ export default function Home() {
   const [inventory, setInventory] = useState([])
   const [open, setOpen] = useState(false)
   const [itemName, setItemName] = useState('')
+  const [searchItem, setSearchItem] = useState('')
 
   const updateInventory = async () => {
     const snapshot = query(collection(firestore, 'inventory'))
     const docs = await getDocs(snapshot)
     const inventoryList = []
     docs.forEach((doc) => {
-      inventoryList.push({
-        name: doc.id,
-        ...doc.data(),
-      })
+      const data = doc.data()
+      if (doc.id.toLowerCase().includes(searchItem.toLowerCase())) {
+        inventoryList.push({
+          name: doc.id,
+          ...doc.data(),
+        })
+      }
     })
     setInventory(inventoryList)
   }
@@ -60,7 +64,7 @@ export default function Home() {
 
   useEffect(() => {
     updateInventory()
-  }, [])
+  }, [searchItem])
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -116,6 +120,14 @@ export default function Home() {
           </Stack>
         </Box>
       </Modal>
+      <TextField
+        label="Search Items"
+        variant="outlined"
+        width="800px"
+        value={searchItem}
+        onChange={(e) => setSearchItem(e.target.value)}
+        sx={{marginBottom: 2}}
+      />
       <Button 
         variant="contained" 
         onClick={() => {
@@ -148,6 +160,7 @@ export default function Home() {
                 justifyContent="space-between"
                 bgcolor="#f0f0f0"
                 padding={5}
+                borderRadius={1}
               >
                 <Typography variant="h3" color="#333" textAlign="center">
                   {name.charAt(0).toUpperCase() + name.slice(1)}
@@ -155,14 +168,24 @@ export default function Home() {
                 <Typography variant="h3" color="#333" textAlign="center">
                   {quantity}
                 </Typography>
-                <Button 
-                  variant="contained" 
-                  onClick={() => {
-                    removeItem(name)
-                  }}
-                >
-                  Remove
-                </Button>
+                <Stack direction="row" spacing={2}>
+                  <Button 
+                    variant="contained" 
+                    onClick={() => {
+                      addItem(name)
+                    }}
+                  >
+                    Add
+                  </Button>
+                  <Button 
+                    variant="contained" 
+                    onClick={() => {
+                      removeItem(name)
+                    }}
+                  >
+                    Remove
+                  </Button>
+                </Stack>
               </Box>
             ))}
         </Stack>
