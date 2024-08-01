@@ -1,8 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Pantry Tracker
+This project is a pantry management application that allows users to keep track of pantry items by adding or removing items and updating their quantities. The project uses Next.js as the frontend framework, Material UI for the UI components, and Firebase as the backend service. This app has a responsive design and updates the database as any items are added or removed from the pantry. 
 
-## Getting Started
+## Features
+- Add items to the pantry
+- Remove items from the pantry
+- Search items from the pantry
+  
+## How to deploy locally on your computer:
 
-First, run the development server:
+1. Clone this repository
+   
+3. Set up a new Firebase project on the Firebase console.
+   
+5. Create a .env file and add these environment variables to your .env file:
+    ```sh
+  FIREBASE_API_KEY=YOUR_API_KEY
+  FIREBASE_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
+  FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+  FIREBASE_STORAGE_BUCKET=YOUR_STORAGE_BUCKET
+  FIREBASE_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+  FIREBASE_APP_ID=YOUR_APP_ID
+  ```
+4. Replace the values using values from your Firebase project configuration.
+
+5. Run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +37,3 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
