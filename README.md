@@ -13,7 +13,7 @@ This project is a pantry management application that allows users to keep track 
 3. Set up a new Firebase project on the Firebase console.
    
 5. Create a .env file and add these environment variables to your .env file:
-    ```sh
+    ```bash
   FIREBASE_API_KEY=YOUR_API_KEY
   FIREBASE_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
   FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
