@@ -79,7 +79,21 @@ export default function Home() {
       justifyContent="center" 
       alignItems="center"
       gap={2}
+      bgcolor="#A7C7E7"
     >
+      <Box 
+        width="1000px" 
+        height="100px" 
+        bgcolor="#6495ED" 
+        display="flex" 
+        alignItems="center" 
+        justifyContent="center"
+        borderRadius={10}
+      >
+        <Typography variant="h2" color="#333">
+          PANTRY ITEMS
+        </Typography>
+      </Box>
       <Modal open={open} onClose={handleClose}>
         <Box
           position="absolute"
@@ -87,7 +101,8 @@ export default function Home() {
           left="50%"
           width={400}
           bgcolor="white"
-          border="2px solid #000"
+          border="2px solid #0047AB"
+          borderRadius={3}
           boxShadow={24}
           p={4}
           display="flex"
@@ -97,7 +112,7 @@ export default function Home() {
             transform: "translate(-50%, -50%)",
           }}
         >
-          <Typography variant="h6">Add Item</Typography>
+          <Typography variant="h6">ADD ITEM</Typography>
           <Stack width="100%" direction="row" spacing={2}>
             <TextField 
               variant="outlined"
@@ -120,13 +135,20 @@ export default function Home() {
           </Stack>
         </Box>
       </Modal>
+      <Box 
+        width="800px" 
+        display="flex" 
+        marginBottom="5px" 
+        justifyContent="center" 
+        alignItems="center"
+        direction="row">
       <TextField
         label="Search Items"
         variant="outlined"
         width="800px"
         value={searchItem}
         onChange={(e) => setSearchItem(e.target.value)}
-        sx={{marginBottom: 2}}
+        sx={{marginBottom: 2, paddingRight: 10, width: 500}}
       />
       <Button 
         variant="contained" 
@@ -136,19 +158,28 @@ export default function Home() {
       >
         Add New Item
       </Button>
-      <Box border="1px solid #333">
-        <Box 
-          width="800px" 
-          height="100px" 
-          bgcolor="#ADD8E6" 
-          display="flex" 
-          alignItems="center" 
-          justifyContent="center"
-        >
-          <Typography variant="h2" color="#333">
-            Inventory Items
-          </Typography>
-        </Box>
+      </Box>
+      <Box border="1px solid white">
+      <Box 
+        width="800px" 
+        height="100px" 
+        display="flex" 
+        alignItems="center" 
+        bgcolor="#87CEEB"
+      >
+        <Typography variant="h2" color="#333" paddingRight={15} paddingLeft={3}>
+          Item        
+        </Typography>
+        <Typography variant="h2" color="#333" paddingRight={12}>
+          Quantity
+        </Typography>
+        <Typography variant="h2" color="#333" paddingRight={8}>
+          +
+        </Typography>
+        <Typography variant="h2" color="#333">
+          -
+        </Typography>
+      </Box>
         <Stack width="800px" height="300px" spacing={2} overflow="auto">
           {inventory.map(({name, quantity}) => (
               <Box 
@@ -170,7 +201,7 @@ export default function Home() {
                 </Typography>
                 <Stack direction="row" spacing={2}>
                   <Button 
-                    variant="contained" 
+                    variant="contained"
                     onClick={() => {
                       addItem(name)
                     }}
